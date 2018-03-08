@@ -10,26 +10,50 @@ var container = document.getElementById("vimage");
 var clearButton = document.getElementById("clear");
 
 var circleClicked = function(e){
-    if(this.getAttribute("fill") == "red"){
-	this.setAttribute("fill", "blue");
-    }
-    else{
+    console.log("THIS: ", this);
+    if(this.fill = "lightpink"){
+	this.fill = "blue";
+	this.setAttribute("fill", this.fill);
+	console.log("Color changed.");
+    } else {
 	container.removeChild(this);
 	red = true;
-	drawDot(Math.random()*500, Math.random()*500);
+	var obj = drawDot(Math.round(Math.random()*501), Math.round(Math.random()*501));
+	obj.display();
+	console.log("New circle drawn.");
     }
 }
-    
+
+/*
 var drawDot = function(x, y){
-    var c1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    c1.setAttribute("cx", x);
-    c1.setAttribute("cy", y);
-    c1.setAttribute("fill", "red");
-    c1.setAttribute("r", "25");
-    c1.addEventListener("click", circleClicked);
-    container.appendChild(c1);
-    console.log("---- CL: ", cl);
-    return cl;
+    var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    dot.setAttribute("cx", x);
+    dot.setAttribute("cy", y);
+    dot.setAttribute("fill", "red");
+    dot.setAttribute("r", "25");
+    dot.addEventListener("click", circleClicked);
+    container.appendChild(dot);
+    console.log("---- Dot: ", dot);
+    return dot;
+}
+*/
+
+var drawDot = function(x, y){
+    var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    dot.xCor = x;
+    dot.yCor = y;
+    dot.fill = "lightpink";
+    dot.radius = "20";
+    dot.display = function(){
+	dot.setAttribute("cx", dot.xCor);
+	dot.setAttribute("cy", dot.yCor);
+	dot.setAttribute("fill", dot.fill);
+	dot.setAttribute("r", dot.radius);
+	dot.addEventListener("click", circleClicked);
+	container.appendChild(dot);
+    }
+    console.log("---- Dot: ", dot);
+    return dot;
 }
 	
 var canvasClicked = function(e){
@@ -38,7 +62,8 @@ var canvasClicked = function(e){
       console.log("e:");
       console.log(e);*/
     if(e.target == this){
-	drawDot(e.offsetX, e.offsetY);
+	var obj = drawDot(e.offsetX, e.offsetY);
+	obj.display();
 	console.log("drawn");
     }
 };
