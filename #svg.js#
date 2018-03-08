@@ -21,15 +21,13 @@ var circleClicked = function(e){
 }
     
 var drawDot = function(x, y){
-    var c1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     c1.setAttribute("cx", x);
     c1.setAttribute("cy", y);
     c1.setAttribute("fill", "red");
     c1.setAttribute("r", "25");
     c1.addEventListener("click", circleClicked);
-    container.appendChild(c1);
-    console.log("---- CL: ", cl);
-    return cl;
+    container.appendChild(c1);   
 }
 	
 var canvasClicked = function(e){
