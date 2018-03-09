@@ -11,8 +11,8 @@ var clearButton = document.getElementById("clear");
 
 var circleClicked = function(e){
     console.log("THIS: ", this);
-    if(this.fill = "lightpink"){
-	this.fill = "blue";
+    if(this.fill == "orange"){
+	this.fill = "lightblue";
 	this.setAttribute("fill", this.fill);
 	console.log("Color changed.");
     } else {
@@ -42,7 +42,7 @@ var drawDot = function(x, y){
     var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     dot.xCor = x;
     dot.yCor = y;
-    dot.fill = "lightpink";
+    dot.fill = "orange";
     dot.radius = "20";
     dot.display = function(){
 	dot.setAttribute("cx", dot.xCor);
